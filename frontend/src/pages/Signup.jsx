@@ -36,7 +36,7 @@ export default function Signup() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="panel rounded-2xl p-5">
         <Field label="Full name" error={errors.name}>
-          <input className={inputClass} placeholder="Kunal Jain" {...register("name", { required: "Name is required" })} />
+          <input className={inputClass} placeholder="JOHNY " {...register("name", { required: "Name is required" })} />
         </Field>
         <Field label="Email" error={errors.email}>
           <input
