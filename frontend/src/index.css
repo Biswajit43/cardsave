@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: #080d18;
+  background-image: radial-gradient(ellipse 120% 70% at 50% -8%, #16233d 0%, #080d18 55%);
+  background-attachment: fixed;
+  color: #f3efe4;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #22304d;
+  border-radius: 999px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-display {
+  font-family: "Fraunces", ui-serif, Georgia, serif;
+  font-feature-settings: "ss01" 1;
+}
+
+.font-mono-num {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+.panel {
+  background: linear-gradient(160deg, rgba(22, 35, 61, 0.9), rgba(15, 23, 41, 0.75));
+  border: 1px solid rgba(201, 162, 39, 0.14);
+}
+
+.panel-flat {
+  background: #0f1729;
+  border: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.hairline {
+  border-color: rgba(201, 162, 39, 0.14);
+}
+
+.gold-text {
+  background: linear-gradient(120deg, #e8c766, #c9a227 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 2px solid #c9a227;
+  outline-offset: 2px;
+}
