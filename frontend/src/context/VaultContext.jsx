@@ -103,6 +103,12 @@ export const VaultProvider = ({ children }) => {
     await api.delete(`/cards/${id}`);
     setCards((prev) => prev.filter((c) => c._id !== id));
   };
+  const stageCardRemoval = useCallback((id) => {
+    setCards((prev) => prev.filter((c) => c._id !== id));
+  }, []);
+  const restoreCard = useCallback((card) => {
+    setCards((prev) => [card, ...prev]);
+  }, []);
 
   // --- UPI ---
   const addUpiId = async (payload) => {
@@ -114,6 +120,12 @@ export const VaultProvider = ({ children }) => {
     await api.delete(`/upi/${id}`);
     setUpiIds((prev) => prev.filter((u) => u._id !== id));
   };
+  const stageUpiRemoval = useCallback((id) => {
+    setUpiIds((prev) => prev.filter((u) => u._id !== id));
+  }, []);
+  const restoreUpi = useCallback((upi) => {
+    setUpiIds((prev) => [upi, ...prev]);
+  }, []);
 
   // --- Vouchers ---
   const addVoucher = async (payload) => {
@@ -185,8 +197,12 @@ export const VaultProvider = ({ children }) => {
     refreshDashboard,
     addCard,
     removeCard,
+    stageCardRemoval,
+    restoreCard,
     addUpiId,
     removeUpiId,
+    stageUpiRemoval,
+    restoreUpi,
     addVoucher,
     redeemVoucher,
     removeVoucher,

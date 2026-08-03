@@ -8,7 +8,7 @@ import { useToast } from "../context/ToastContext.jsx";
 
 export default function UpiDetailModal({ upi, onClose }) {
   const [qrUrl, setQrUrl] = useState(null);
-  const { removeUpiId, toggleFavorite } = useVault();
+  const { removeUpiId, stageUpiRemoval, restoreUpi, toggleFavorite } = useVault();
   const { undoable, error: toastError } = useToast();
 
   useEffect(() => {
@@ -25,8 +25,10 @@ export default function UpiDetailModal({ upi, onClose }) {
 
   const handleDelete = () => {
     onClose();
+    stageUpiRemoval(upi._id);
     undoable(`${upi.label} removed`, {
       onExpire: () => removeUpiId(upi._id),
+      onUndo: () => restoreUpi(upi),
     });
   };
 

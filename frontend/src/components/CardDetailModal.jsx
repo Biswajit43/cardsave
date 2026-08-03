@@ -8,15 +8,17 @@ import { useToast } from "../context/ToastContext.jsx";
 
 export default function CardDetailModal({ card, onClose }) {
   const [revealOpen, setRevealOpen] = useState(false);
-  const { removeCard, toggleFavorite } = useVault();
+  const { removeCard, stageCardRemoval, restoreCard, toggleFavorite } = useVault();
   const { undoable } = useToast();
 
   if (!card) return null;
 
   const handleDelete = () => {
     onClose();
+    stageCardRemoval(card._id);
     undoable(`${card.bank} card removed`, {
       onExpire: () => removeCard(card._id),
+      onUndo: () => restoreCard(card),
     });
   };
 
